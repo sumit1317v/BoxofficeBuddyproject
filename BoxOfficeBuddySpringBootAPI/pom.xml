@@ -8,10 +8,10 @@
 		<version>3.3.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.boxofficebuddy.example</groupId>
-	<artifactId>BoxOfficeBuddySpringBoot</artifactId>
+	<groupId>com.example</groupId>
+	<artifactId>BoxOfficeBuddySpringAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>BoxOfficeBuddySpringBoot</name>
+	<name>BoxOfficeBuddySpringAPI</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

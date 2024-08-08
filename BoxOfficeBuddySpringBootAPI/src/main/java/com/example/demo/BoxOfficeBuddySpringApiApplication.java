@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BoxOfficeBuddySpringBootApplication {
+public class BoxOfficeBuddySpringApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BoxOfficeBuddySpringBootApplication.class, args);
+		SpringApplication.run(BoxOfficeBuddySpringApiApplication.class, args);
 	}
 
 }
