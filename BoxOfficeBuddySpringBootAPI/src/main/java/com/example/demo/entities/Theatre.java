@@ -44,6 +44,11 @@ public class Theatre {
     @JoinColumn(name = "user_id")
     private User user;
 	
+	@JsonIgnoreProperties("theatres")
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+	
 	 @JsonIgnoreProperties("theatre")
 	@OneToMany(mappedBy="theatre", cascade=CascadeType.ALL ,orphanRemoval = true)
 	private Set<TheatreScreens> screens;
@@ -103,6 +108,26 @@ public class Theatre {
 		this.pincode = pincode;
 		this.phone = phone;
 		this.user = user;
+		this.screens = screens;
+		this.theatreReviews = theatreReviews;
+	}
+	
+	
+
+
+	public Theatre(Integer noOfScreens, String theatreName, String gstNo, String addressLine1, String addressLine2,
+			String pincode, String phone, User user, City city, Set<TheatreScreens> screens,
+			Set<TheatreReviews> theatreReviews) {
+		super();
+		this.noOfScreens = noOfScreens;
+		this.theatreName = theatreName;
+		this.gstNo = gstNo;
+		this.addressLine1 = addressLine1;
+		this.addressLine2 = addressLine2;
+		this.pincode = pincode;
+		this.phone = phone;
+		this.user = user;
+		this.city = city;
 		this.screens = screens;
 		this.theatreReviews = theatreReviews;
 	}
@@ -217,6 +242,17 @@ public class Theatre {
 		this.theatreReviews = theatreReviews;
 	}
 
+
+	public City getCity() {
+		return city;
+	}
+
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+    
+	
 
 	
 

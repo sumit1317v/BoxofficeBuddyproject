@@ -35,10 +35,15 @@ public class City {
     @OneToMany(mappedBy="city", cascade=CascadeType.ALL, orphanRemoval = true)
     private Set<User> users;
     
+    
+    @JsonIgnoreProperties("city")
+    @OneToMany(mappedBy="city", cascade=CascadeType.ALL, orphanRemoval = true)
+    private Set<Theatre> theatres;
+    
 
 	public City() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public City(String cityName, State state) {
@@ -54,6 +59,16 @@ public class City {
 		this.cityName = cityName;
 		this.state = state;
 		this.users = users;
+	}
+	
+	
+
+	public City(String cityName, State state, Set<User> users, Set<Theatre> theatres) {
+		super();
+		this.cityName = cityName;
+		this.state = state;
+		this.users = users;
+		this.theatres = theatres;
 	}
 
 	public Integer getCityId() {
@@ -87,5 +102,15 @@ public class City {
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
+
+	public Set<Theatre> getTheatres() {
+		return theatres;
+	}
+
+	public void setTheatres(Set<Theatre> theatres) {
+		this.theatres = theatres;
+	}
+	
+	
 	
 }
