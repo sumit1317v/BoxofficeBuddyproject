@@ -1,7 +1,10 @@
 package com.example.demo.entities;
 
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,10 +26,14 @@ public class City {
     @Column(name="city_name")
     private String cityName;
     
-    @JsonIgnoreProperties("citys")
+    @JsonIgnoreProperties("cities")
     @ManyToOne
     @JoinColumn(name = "state_id")
     private State state;
+    
+    @JsonIgnoreProperties("city")
+    @OneToMany(mappedBy="city", cascade=CascadeType.ALL, orphanRemoval = true)
+    private Set<User> users;
     
 
 	public City() {
@@ -37,6 +45,15 @@ public class City {
 		super();
 		this.cityName = cityName;
 		this.state = state;
+	}
+	
+	
+
+	public City(String cityName, State state, Set<User> users) {
+		super();
+		this.cityName = cityName;
+		this.state = state;
+		this.users = users;
 	}
 
 	public Integer getCityId() {
@@ -62,6 +79,13 @@ public class City {
 	public void setState(State state) {
 		this.state = state;
 	}
-    
-    
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+	
 }
