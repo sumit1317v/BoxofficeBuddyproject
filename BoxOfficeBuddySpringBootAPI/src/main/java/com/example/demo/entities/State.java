@@ -25,17 +25,26 @@ public class State {
     private String stateName;
     
     
-    @JsonIgnoreProperties("state")	@OneToMany(mappedBy = "state",cascade = CascadeType.ALL)
-	Set<City> citys;
+    @JsonIgnoreProperties("state")	
+    @OneToMany(mappedBy = "state",cascade = CascadeType.ALL ,orphanRemoval = true)
+	private Set<City> cities;
 
 	public State() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public State(String stateName) {
 		super();
 		this.stateName = stateName;
+	}
+	
+	
+
+	public State(String stateName, Set<City> cities) {
+		super();
+		this.stateName = stateName;
+		this.cities = cities;
 	}
 
 	public Integer getStateId() {
@@ -53,7 +62,14 @@ public class State {
 	public void setStateName(String stateName) {
 		this.stateName = stateName;
 	}
-    
-    
 
+	public Set<City> getCities() {
+		return cities;
+	}
+
+	public void setCities(Set<City> cities) {
+		this.cities = cities;
+	}
+	
+	
 }
