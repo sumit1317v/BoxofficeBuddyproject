@@ -1,0 +1,49 @@
+/* Table Styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* Button Styling */
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Edit Button Styling */
+.edit-button {
+  background-color: #008CBA; /* Blue */
+}
+
+/* Delete Button Styling */
+.delete-button {
+  background-color: #f44336; /* Red */
+}
+
+/* Add Movie Button Styling */
+.add-movie-button {
+  background-color: #4CAF50; /* Green */
+  display: block;
+  margin: 0 auto;
+  width: 150px; /* Adjust width as needed */
+}
