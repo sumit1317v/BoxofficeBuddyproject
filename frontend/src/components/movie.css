@@ -1,0 +1,35 @@
+.movie-list {
+  padding: 20px;
+}
+
+.movie-list h1 {
+  margin-bottom: 20px;
+}
+
+.movie-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.movie-list th, .movie-list td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.movie-list th {
+  background-color: #f4f4f9;
+}
+
+.movie-list button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.movie-list button:hover {
+  background-color: #0056b3;
+}
