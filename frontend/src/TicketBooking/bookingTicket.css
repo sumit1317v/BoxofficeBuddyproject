@@ -1,0 +1,108 @@
+.booking-ticket-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hello11{
+  margin-top: 50px;
+}
+
+
+.title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.reserved-seats-list {
+  list-style: none;
+  padding: 0;
+}
+
+.reserved-seats-list li {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* .confirm-button {
+  background-color: green;
+  color: white;
+  margin-right: 10px;
+} */
+
+.cancel-button {
+  background-color: red;
+  color: white;
+}
+
+.no-seats-row {
+  margin-top: 20px;
+}
+
+
+
+.reserved-seats-row {
+  margin-bottom: 20px;
+}
+
+
+.button-row {
+  margin-top: 20px;
+}
+
+.confirm-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.confirm-button:hover {
+  background-color: #218838;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cancel-button:hover {
+  background-color: #c82333;
+}
+
+.no-seats-row {
+  margin-top: 20px;
+}
+
+.no-seats-row h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.no-seats-row button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.no-seats-row button:hover {
+  background-color: #0056b3;
+}
+
+

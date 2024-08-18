@@ -1,0 +1,22 @@
+.seat {
+  width: 20px;  /* Reduced width */
+  height: 20px;  /* Reduced height */
+  display: inline-block;
+  margin: 2px;  /* Smaller margin between seats */
+  cursor: pointer;
+  border-radius: 3px;  /* Smaller border radius */
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.seat.available {
+  background-color: green;
+}
+
+.seat.reserved {
+  background-color: red;
+}
+
+.seat:hover {
+  opacity: 0.8;
+}

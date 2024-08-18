@@ -2,6 +2,7 @@ package com.example.demo.entities;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -29,6 +30,7 @@ import jakarta.persistence.Table;
 	    @Column(name="movie_description")
 	    private String movieDescription;
 	    
+	    @JsonIgnore
 	    @JsonIgnoreProperties("movieCategory")
 		@OneToMany(mappedBy = "movieCategory",cascade = CascadeType.ALL)
 		private Set<Movie> movies;
@@ -40,15 +42,18 @@ import jakarta.persistence.Table;
 		}	
 		
 		
-		
+		public MovieCategory(String movieCategory, String movieDescription) {
+			super();
+			this.movieCategory = movieCategory;
+			this.movieDescription = movieDescription;
+		}
+
 		public MovieCategory(String movieCategory, String movieDescription, Set<Movie> movies) {
 			super();
 			this.movieCategory = movieCategory;
 			this.movieDescription = movieDescription;
 			this.movies = movies;
 		}
-
-
 
 		public Integer getMovieCategoryId() {
 			return movieCategoryId;
@@ -62,11 +67,7 @@ import jakarta.persistence.Table;
 		public void setMovieCategory(String movieCategory) {
 			this.movieCategory = movieCategory;
 		}
-		public MovieCategory(String movieCategory, String movieDescription) {
-			super();
-			this.movieCategory = movieCategory;
-			this.movieDescription = movieDescription;
-		}
+		
 		public String getMovieDescription() {
 			return movieDescription;
 		}
@@ -77,7 +78,9 @@ import jakarta.persistence.Table;
 				return movies;
 		}
 		public void setMovies(Set<Movie> movies) {
-				this.movies = movies;
+			for(Movie m:movies)
+				m.setMovieCategory(this);
+			this.movies = movies;
 		}
 
 

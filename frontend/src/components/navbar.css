@@ -105,10 +105,46 @@ body {
   color: lightyellow;
 }
 
+.a{
+  columns: black;
+}
+
+.navbar-nav  .searchList a{
+  color: rgb(8, 8, 8) !important;
+}
 .navbar-nav .nav-item #navbarDropdown{
   color: lightyellow;
 }
 
+/* li.hello{
+  
+} */
+
 .searchFont{
   width: 250% !important;
 }
+
+/* navbar.css */
+
+/* Styling for the search results list */
+.search-results {
+  background-color: black; /* Set the background color to black */
+  color: white; /* Set the text color to white for contrast */
+  max-height: 200px; /* Optional: Limit the height of the dropdown and make it scrollable */
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Styling for individual search result items */
+.search-results .list-group-item {
+  background-color: White; /* Ensure the background color of each item is also black */
+  color: white; /* Set the text color to white */
+}
+
+.search-results .list-group-item:hover {
+  background-color: lightblue; /* Change the background color when hovering over an item */
+}
+
+
+

@@ -1,0 +1,103 @@
+/* Container for the form */
+.shows-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+/* Form heading */
+.shows-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Form elements */
+.form-group, div {
+  margin-bottom: 15px;
+}
+
+/* Labels for form elements */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Input fields and select dropdowns */
+input[type="date"], input[type="checkbox"], select, input[type="number"], button {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+/* Button styling */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Success and error messages */
+.success-message {
+  color: #28a745;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #28a745;
+  border-radius: 4px;
+  background-color: #d4edda;
+}
+
+.error-messages {
+  margin-bottom: 15px;
+}
+
+.error {
+  color: #dc3545;
+  margin-bottom: 5px;
+  padding: 10px;
+  border: 1px solid #dc3545;
+  border-radius: 4px;
+  background-color: #f8d7da;
+}
+
+/* Custom styling for form group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styling for checkboxes */
+.form-group input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+input[type="checkbox"] {
+  margin-left: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .shows-container {
+    padding: 15px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
