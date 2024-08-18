@@ -37,6 +37,8 @@ public class Booking {
     @JsonIgnoreProperties("bookings") // Ignore the bookings list in User to prevent recursive serialization
     private User user;
 
+    
+    @JsonIgnoreProperties("bookings")
     @ManyToOne
     @JoinColumn(name = "show_id")
     private TheatreScreenShow show;
@@ -76,7 +78,7 @@ public class Booking {
 
 
 	public void setDateTime(java.util.Date dateTime) {
-		this.dateTime = dateTime;
+		this.dateTime =  dateTime;
 	}
 
 
