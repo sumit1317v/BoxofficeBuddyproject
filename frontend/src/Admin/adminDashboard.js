@@ -31,9 +31,10 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <h1>Movie Categories</h1>
       
-      <table>
+      <h1>Welcome to Admin Dashboard</h1>
+      {/* <h3>movie category</h3> */}
+      {/* <table>
         <thead>
           <tr>
             <th>Id</th>
@@ -55,7 +56,7 @@ const AdminDashboard = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 };
