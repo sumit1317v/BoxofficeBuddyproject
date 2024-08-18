@@ -8,7 +8,7 @@ export default function LogoutComponent() {
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        localStorage.clear();
+    localStorage.clear();
     dispatch(logout());
     console.log("in logout comp")
     navigate('/');
