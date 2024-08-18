@@ -1,36 +1,29 @@
-// // src/MovieCard.js
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import './movieCard.css';
-// import img from '../images/project-k.jpg'
-// const MovieCard = ({ movie }) => {
-//   return (
-//     <div className="card movie-card">
-//       {/* <img src={movie.posterUrl} className="card-img-top" alt={movie.title} /> */}
-//       <img src={img} className="card-img-top" alt={movie.title} />
-//       <div className="card-body">
-//         <h5 className="card-title">{movie.title}</h5>
-//         <p className="card-text">{movie.description}</p>
-//         <Link to={`/book/${movie.id}`} className="btn btn-primary">Book Now</Link>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default MovieCard;
-// src/MovieCard.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './movieCard.css';
-import img from '../images/project-k.jpg'
-const MovieCard = ({ movie, handleBookNow }) => {
+
+const MovieCard = ({ movie }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    // Navigate to the customer dashboard with the entire movie object passed in state
+    navigate(`/customerDashboard`, { state: { movie } });
+  };
+
   return (
-    <div className="card movie-card">
-      {/* <img src={movie.posterUrl} className="card-img-top" alt={movie.title} /> */}
-      <img src={img} className="card-img-top" alt={movie.title} />
+    <div 
+      className="card movie-card" 
+      onClick={handleCardClick} 
+      style={{ cursor: 'pointer' }} // Add pointer cursor to indicate it's clickable
+    >
+      <img
+        src={`data:image/jpeg;base64,${movie.movieBannerPath}`} // Assuming movieBannerPath is a base64 string
+        className="card-img-top"
+        alt={movie.movieTitle}
+      />
       <div className="card-body">
-        <h5 className="card-title">{movie.title}</h5>
-        <p className="card-text">{movie.description}</p>
-        <button className="btn btn-primary" onClick={handleBookNow}>Book Now</button>
+        <h5 className="card-title">{movie.movieTitle}</h5>
+        <p className="card-text">{movie.movieCategory.movieDescription}</p>
       </div>
     </div>
   );
