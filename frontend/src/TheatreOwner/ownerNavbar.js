@@ -18,13 +18,18 @@ export default function AdminNavbar(){
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/theaterOwner/addmovies" className="nav-link px-3">
-                Add Movies
+              <Link to="/theaterOwner/addtheatre" className="nav-link px-3">
+                Add Theatre
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/theaterOwner/addtheatre" className="nav-link px-3">
-                Add Theatre
+              <Link to="/theaterOwner/addscreens" className="nav-link px-3">
+                Add Screen
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/theaterOwner/addShowes" className="nav-link px-3">
+                Add Shows
               </Link>
             </li>
             <li className="nav-item">
