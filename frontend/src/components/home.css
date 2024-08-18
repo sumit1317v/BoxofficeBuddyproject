@@ -1,0 +1,38 @@
+/* src/Home.css */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.home-container h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.home-container p {
+  font-size: 1.5rem;
+}
+/* src/home.css */
+.container h1{
+  /* padding-top: 20px; */
+  /* font-size: 10px; */
+}
+
+.modal-footer .btnFont{
+  width: 100px;
+  height: 44px;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  /* gap: 20px; */
+}
+
+.text-center {
+  text-align: center;
+}
