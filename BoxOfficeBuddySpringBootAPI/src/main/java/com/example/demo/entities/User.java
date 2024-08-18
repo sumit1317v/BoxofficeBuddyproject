@@ -4,6 +4,7 @@ package com.example.demo.entities;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -43,29 +44,35 @@ public class User {
     @Column(name="status")
     private Integer status;
 
+    
     @JsonIgnoreProperties("users")
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
 
+    
     @JsonIgnoreProperties("users")
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
     
+    @JsonIgnore
     @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Theatre> theatres;
     
+    @JsonIgnore
     @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<MovieReviews> movieReviews;
     
+    @JsonIgnore
     @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<TheatreReviews> theatreReviews;
     
     
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("user") // Ignore the user reference in Booking to prevent recursive serialization
     private Set<Booking> bookings;

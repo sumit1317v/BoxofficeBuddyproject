@@ -3,7 +3,10 @@ package com.example.demo.entities;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -39,20 +42,24 @@ public class Theatre {
 	@Column(name="phone")
 	private String phone;
 	
+	@JsonIgnore
 	@JsonIgnoreProperties("theatres")
 	@ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 	
+	@JsonIgnore
 	@JsonIgnoreProperties("theatres")
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
 	
+	@JsonIgnore
 	 @JsonIgnoreProperties("theatre")
 	@OneToMany(mappedBy="theatre", cascade=CascadeType.ALL ,orphanRemoval = true)
-	private Set<TheatreScreens> screens;
+	 private Set<TheatreScreen> screens;
 	
+	@JsonIgnore
 	@JsonIgnoreProperties("theatre")
 	@OneToMany(mappedBy = "theatre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<TheatreReviews> theatreReviews;
@@ -81,7 +88,7 @@ public class Theatre {
 
 
 	public Theatre(Integer noOfScreens, String theatreName, String gstNo, String addressLine1, String addressLine2,
-			String pincode, String phone, User user, Set<TheatreScreens> screens) {
+			String pincode, String phone, User user, Set<TheatreScreen> screens) {
 		super();
 		this.noOfScreens = noOfScreens;
 		this.theatreName = theatreName;
@@ -98,7 +105,7 @@ public class Theatre {
 
 
 	public Theatre(Integer noOfScreens, String theatreName, String gstNo, String addressLine1, String addressLine2,
-			String pincode, String phone, User user, Set<TheatreScreens> screens, Set<TheatreReviews> theatreReviews) {
+			String pincode, String phone, User user, Set<TheatreScreen> screens, Set<TheatreReviews> theatreReviews) {
 		super();
 		this.noOfScreens = noOfScreens;
 		this.theatreName = theatreName;
@@ -116,7 +123,7 @@ public class Theatre {
 
 
 	public Theatre(Integer noOfScreens, String theatreName, String gstNo, String addressLine1, String addressLine2,
-			String pincode, String phone, User user, City city, Set<TheatreScreens> screens,
+			String pincode, String phone, User user, City city, Set<TheatreScreen> screens,
 			Set<TheatreReviews> theatreReviews) {
 		super();
 		this.noOfScreens = noOfScreens;
@@ -223,12 +230,12 @@ public class Theatre {
 	}
 
 
-	public Set<TheatreScreens> getScreens() {
+	public Set<TheatreScreen> getScreens() {
 		return screens;
 	}
 
 
-	public void setScreens(Set<TheatreScreens> screens) {
+	public void setScreens(Set<TheatreScreen> screens) {
 		this.screens = screens;
 	}
 
