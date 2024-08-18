@@ -1,0 +1,39 @@
+.confirmation-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.reserved-seats-list {
+  list-style: none;
+  padding: 0;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.reserved-seats-list li {
+  margin-bottom: 10px;
+}
+
+.home-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.home-button:hover {
+  background-color: #0056b3;
+}

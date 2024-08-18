@@ -2,6 +2,7 @@ package com.example.demo.entities;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -31,14 +32,21 @@ public class City {
     @JoinColumn(name = "state_id")
     private State state;
     
+    @JsonIgnore
     @JsonIgnoreProperties("city")
     @OneToMany(mappedBy="city", cascade=CascadeType.ALL, orphanRemoval = true)
     private Set<User> users;
     
+    
+//    @JsonIgnore
+//    @JsonIgnoreProperties("city")
+//    @OneToMany(mappedBy="city", cascade=CascadeType.ALL, orphanRemoval = true)
+//    private Set<Theatre> theatres;
+    
 
 	public City() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public City(String cityName, State state) {
@@ -55,6 +63,10 @@ public class City {
 		this.state = state;
 		this.users = users;
 	}
+	
+	
+
+	
 
 	public Integer getCityId() {
 		return cityId;
@@ -87,5 +99,9 @@ public class City {
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
+
+	
+	
+	
 	
 }

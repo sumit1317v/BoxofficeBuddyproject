@@ -3,14 +3,28 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using userloginservice.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+
+
 
 namespace userloginservice.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
     [EnableCors]
-    public class UserloginController : ControllerBase
+    public class UserLoginController : ControllerBase
     {
+        private readonly boxofficebuddy_dbContext _context;
+
+        public UserLoginController(boxofficebuddy_dbContext context)
+        {
+            _context = context;
+        }
+
+
+
         [HttpGet]
 
         public List<User> GetUser()
@@ -46,19 +60,27 @@ namespace userloginservice.Controllers
 
 
         [HttpPost]
-        public User SaveUser(User user)
+        public dynamic SaveUser(User u)
         {
             using (var db = new boxofficebuddy_dbContext())
             {
-                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-
-                db.Users.Add(user);
-                db.SaveChanges();
+                try
+                {
+                    u.Password = BCrypt.Net.BCrypt.HashPassword(u.Password);
+                    db.Users.Add(u);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    return "Username already exists!";
+                }
             }
-            return user;
+            return u;
         }
+
         [HttpPost]
-        public IActionResult CheckLogin(User us) {
+        public IActionResult CheckLogin(User us)
+        {
 
             User? user;
 
@@ -77,7 +99,11 @@ namespace userloginservice.Controllers
             }
             return Unauthorized(new { message = "Invalid username or password" });
         }
-    
+
+
+
+
+
 
         [HttpGet]
         public List<State> GetAllState()
@@ -100,5 +126,6 @@ namespace userloginservice.Controllers
             }
             return result;
         }
+
     }
 }
