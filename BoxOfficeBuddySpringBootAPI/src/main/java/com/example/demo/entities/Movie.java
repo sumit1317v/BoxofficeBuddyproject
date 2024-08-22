@@ -2,9 +2,12 @@ package com.example.demo.entities;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
   @Entity
@@ -25,7 +29,7 @@ import jakarta.persistence.Table;
 	    @Column(name="movie_title")
 	    private String movieTitle;
 	    
-	    @Column(name="movie_relese_date")
+	    @Column(name="movie_release_date")
 	    private java.sql.Date movieReleaseDate;
 	    
 	    @Column(name="movie_duration")
@@ -34,35 +38,51 @@ import jakarta.persistence.Table;
 	    @Column(name="movie_language")
 	    private String movieLanguage;
 	    
-	    @Column(name="movie_synopsis")
-	    private String movieSynopsis;
+	  
 	    
-	    @Column(name="movie_banner_path")
-	    private String movieBannerPath;
-	    
-	    @Column(name="movie_trailer_path")
-	    private String movieTrailerPath;
+	    @Column(name="movie_banner_path",columnDefinition = "LONGBLOB")
+	    private byte[] movieBannerPath;
+	     
 	    
 	    @JsonIgnoreProperties("movies")
 	    @ManyToOne
 	    @JoinColumn(name = "movie_category_id")
 	    private MovieCategory movieCategory;
 	    
+	    @JsonIgnore
+	    @JsonIgnoreProperties("movie")
+	    @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL,orphanRemoval = true)
+	    private Set<TheatreScreenShow> theatrescreenshows;
+	    
+	    
 	    public Movie() {
 	    	super();
 	    }
 	    
 	    public Movie(String movieTitle, Date movieReleaseDate, Time movieDuration, String movieLanguage,
-				String movieSynopsis, String movieBannerPath, MovieCategory movieCategory, String movieTrailorPath) {
+				byte[] movieBannerPath, MovieCategory movieCategory) {
 			super();
 			this.movieTitle = movieTitle;
 			this.movieReleaseDate = movieReleaseDate;
 			this.movieDuration = movieDuration;
 			this.movieLanguage = movieLanguage;
-			this.movieSynopsis = movieSynopsis;
 			this.movieBannerPath = movieBannerPath;
 			this.movieCategory = movieCategory;
-			this.movieTrailorPath = movieTrailorPath;
+			
+		}
+	    
+	    
+
+		public Movie(String movieTitle, Date movieReleaseDate, Time movieDuration, String movieLanguage,
+				byte[] movieBannerPath, MovieCategory movieCategory, Set<TheatreScreenShow> theatrescreenshows) {
+			super();
+			this.movieTitle = movieTitle;
+			this.movieReleaseDate = movieReleaseDate;
+			this.movieDuration = movieDuration;
+			this.movieLanguage = movieLanguage;
+			this.movieBannerPath = movieBannerPath;
+			this.movieCategory = movieCategory;
+			this.theatrescreenshows = theatrescreenshows;
 		}
 
 		public Integer getMovieId() {
@@ -105,29 +125,16 @@ import jakarta.persistence.Table;
 			this.movieLanguage = movieLanguage;
 		}
 
-		public String getMovieSynopsis() {
-			return movieSynopsis;
-		}
-
-		public void setMovieSynopsis(String movieSynopsis) {
-			this.movieSynopsis = movieSynopsis;
-		}
-
-		public String getMovieBannerPath() {
+		
+		public byte[] getMovieBannerPath() {
 			return movieBannerPath;
 		}
 
-		public void setMovieBannerPath(String movieBannerPath) {
+		public void setMovieBannerPath(byte[] movieBannerPath) {
 			this.movieBannerPath = movieBannerPath;
 		}
 
-		public String getMovieTrailorPath() {
-			return movieTrailorPath;
-		}
-
-		public void setMovieTrailorPath(String movieTrailorPath) {
-			this.movieTrailorPath = movieTrailorPath;
-		}
+		
 
 		public MovieCategory getMovieCategory() {
 			return movieCategory;
@@ -137,7 +144,19 @@ import jakarta.persistence.Table;
 			this.movieCategory = movieCategory;
 		}
 
-		private String movieTrailorPath;
+		public Set<TheatreScreenShow> getTheatrescreenshows() {
+			return theatrescreenshows;
+		}
+
+		public void setTheatrescreenshows(Set<TheatreScreenShow> theatrescreenshows) {
+			this.theatrescreenshows = theatrescreenshows;
+		}
+		
+		
+
+		
+
+		
 
 	  
 
